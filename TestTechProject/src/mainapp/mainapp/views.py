@@ -2,9 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def home(request):
-    user=request.user
+    products=["Cherries","Apples","Oranges","Strawbery","Pears","Watermelons"]
     context={
-        'user':user,
+        'products':products,
 
     }
     return render(request,"home.html",context)
