@@ -8,7 +8,7 @@ def admin_console(request):
     return render(request,'products/products_page.html',{'products':products})
 def details(request,pk):
     pk=int(pk)
-    item= get_object_or_404(Product,pk)
+    item= get_object_or_404(Product,pk=pk)
     form=ProductForm(data=request.POST or None,instance=item)
     if request.method =='POST':
         if form.is_valid():
