@@ -2,9 +2,27 @@
 {%block title%}Royal Hotels{%endblock%}
 {%block header%}Welcome  to the Royal Hotels!{%endblock%}
 {%block content%}
-{%for product in products%}
-    <ul>
-        <li>{{product.name}}</li>
-    </ul>
-{%endfor%}
+<div class="admin_panel">
+    <form name="productForm" method="POST" action="">
+        <div class="formObjects">
+            {%csrf_token%}
+            <label for="menu_id">
+                Select a Product from the List You Added
+            </label>
+            <select id="menu_id" name="menu" onchange="top.location.href=this.options[this.selectedindex].value;)">
+                {%for product in products%}
+                    <option value="../{{product.pk}}/details/">{{product.name}}</option>
+                {%endfor%}
+            </select>
+            <div class="formBtn_container">
+                <a href=""><button type="button" class="btn">Create a New Product</button> </a>
+                <a href="{%url 'home'%}"><button type="button" class="btn">Logout Of Profile</button> </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
 {%endblock%}
