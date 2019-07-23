@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block title %}Top 10 Podcasts{% endblock %}
+
+
+{% block content %}
+{% include 'nav.html' %} <!--Add navigation to Podcast html-->
+
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Current Top Ten Podcasts on Stitcher
+                </h1>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section class="section">
+            <ol>
+                {% for podcast in podcasts %}
+                    <a href="https://stitcher.com/{{ podcast.details }}">
+                        <li>{{ podcast.title }}</li>
+
+                    </a>
+                <li>
+                    <div><img src={{podcast.image}}>
+                    <p style="align:center;"> Category:{{podcast.category}}</p>
+                    <p>Delta:{{podcast.delta}}</p>
+                    <p>Rank:{{podcast.rank}}</p>
+                    </div>
+                     </li>
+
+
+                {% endfor %}
+            </ol>
+        </section>
+    </div>
+{%include 'footer.html' %}
+{% endblock %}
